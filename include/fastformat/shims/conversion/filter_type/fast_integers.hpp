@@ -79,6 +79,8 @@
 #include <stlsoft/conversion/integer_to_string.hpp>
 #include <stlsoft/string/shim_string.hpp>
 
+#include <stdint.h>
+
 /* /////////////////////////////////////////////////////////////////////////
  * Namespace
  */
@@ -187,8 +189,8 @@ namespace ximpl_fast_integers
 
 inline ximpl_fast_integers::integer_shim<21> filter_type(
 # if defined(STLSOFT_CF_BUILTIN_long_long_SUPPORT)
-    signed long long value
-,   signed long long const*
+    int64_t value
+,   int64_t const*
 # elif defined(STLSOFT_CF_64BIT_INT_SUPPORT)
     ::stlsoft::sint64_t value
 ,   ::stlsoft::sint64_t const*
@@ -211,8 +213,8 @@ inline ximpl_fast_integers::integer_shim<21> filter_type(
 
 inline ximpl_fast_integers::integer_shim<21> filter_type(
 # if defined(STLSOFT_CF_BUILTIN_long_long_SUPPORT)
-    unsigned long long value
-,   unsigned long long const*
+    uint64_t value
+,   uint64_t const*
 # elif defined(STLSOFT_CF_64BIT_INT_SUPPORT)
     ::stlsoft::uint64_t value
 ,   ::stlsoft::uint64_t const*
@@ -235,8 +237,8 @@ inline ximpl_fast_integers::integer_shim<21> filter_type(
  *  <code>long</code> integers as format arguments.
  */
 inline ximpl_fast_integers::integer_shim<12> filter_type(
-    signed long value
-,   signed long const*
+    int32_t value
+,   int32_t const*
 ,   ff_char_t const volatile*
 )
 {
@@ -251,8 +253,8 @@ inline ximpl_fast_integers::integer_shim<12> filter_type(
  *  <code>long</code> integers as format arguments.
  */
 inline ximpl_fast_integers::integer_shim<12> filter_type(
-    unsigned long value
-,   unsigned long const*
+    uint32_t value
+,   uint32_t const*
 ,   ff_char_t const volatile*
 )
 {
@@ -264,43 +266,15 @@ inline ximpl_fast_integers::integer_shim<12> filter_type(
 }
 
 /** Filtering conversion shim function for implicitly adapting signed
- *  <code>int</code> integers as format arguments.
- */
-inline ximpl_fast_integers::integer_shim<12> filter_type(
-    signed int value
-,   signed int const*
-,   ff_char_t const volatile*
-)
-{
-    signed long value2 = value;
-
-    return filter_type(value2, &value2, static_cast<ff_char_t const volatile*>(0));
-}
-
-/** Filtering conversion shim function for implicitly adapting unsigned
- *  <code>int</code> integers as format arguments.
- */
-inline ximpl_fast_integers::integer_shim<12> filter_type(
-    unsigned int value
-,   unsigned int const*
-,   ff_char_t const volatile*
-)
-{
-    unsigned long value2 = value;
-
-    return filter_type(value2, &value2, static_cast<ff_char_t const volatile*>(0));
-}
-
-/** Filtering conversion shim function for implicitly adapting signed
  *  <code>short</code> integers as format arguments.
  */
 inline ximpl_fast_integers::integer_shim<12> filter_type(
-    signed short value
-,   signed short const*
+    int16_t value
+,   int16_t const*
 ,   ff_char_t const volatile*
 )
 {
-    signed long value2 = value;
+    int32_t value2 = value;
 
     return filter_type(value2, &value2, static_cast<ff_char_t const volatile*>(0));
 }
@@ -309,12 +283,12 @@ inline ximpl_fast_integers::integer_shim<12> filter_type(
  *  <code>short</code> integers as format arguments.
  */
 inline ximpl_fast_integers::integer_shim<12> filter_type(
-    unsigned short value
-,   unsigned short const*
+    uint16_t value
+,   uint16_t const*
 ,   ff_char_t const volatile*
 )
 {
-    unsigned long value2 = value;
+    uint32_t value2 = value;
 
     return filter_type(value2, &value2, static_cast<ff_char_t const volatile*>(0));
 }
@@ -328,7 +302,7 @@ inline ximpl_fast_integers::integer_shim<12> filter_type(
 ,   ff_char_t const volatile*
 )
 {
-    signed long value2 = value;
+    int32_t value2 = value;
 
     return filter_type(value2, &value2, static_cast<ff_char_t const volatile*>(0));
 }
@@ -339,7 +313,7 @@ inline ximpl_fast_integers::integer_shim<12> filter_type(
 ,   ff_char_t const volatile*
 )
 {
-    unsigned long value2 = value;
+    uint32_t value2 = value;
 
     return filter_type(value2, &value2, static_cast<ff_char_t const volatile*>(0));
 }
@@ -544,3 +518,4 @@ inline size_t c_str_len(
 #endif /* FASTFORMAT_INCL_FASTFORMAT_SHIMS_CONVERSION_FILTER_TYPE_HPP_FAST_INTEGERS */
 
 /* ///////////////////////////// end of file //////////////////////////// */
+
