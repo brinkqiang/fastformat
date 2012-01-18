@@ -1,0 +1,18 @@
+FastFormat - TODO lists
+=======================
+
+Updated:    1st December 2011
+
+
+FastFormat 0.7+ TODOs:
+---------------------
+
+ + integration with Pantheios (without implicit dependency)
+
+ + full distribution of makefiles, project files, workspace files, etc.
+
+ ~ decent docs
+
+ ~ decent website
+
+=============================== End of file ================================
